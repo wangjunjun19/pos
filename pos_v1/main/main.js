@@ -3,8 +3,7 @@ function printReceipt(inputs) {
   var Items=buildItems(inputs);
   var allItem=buildAllItems(Items);
   var cartItems=bulidCartItems(allItem);
-  var receipt=buildReceipt(cartItems);
-  var Receipt=buildCostSaving(receipt);
+  var Receipt=buildReceipt(cartItems);
 
   console.log(printf(Receipt));
 
@@ -84,26 +83,26 @@ function buildReceipt(cartItems) {
   }
   Receipt.cartItems = cartItems;
   Receipt.total = sum;
-
+  Receipt.CostSaving=buildCostSaving(cartItems);
   return Receipt;
 
 }
 
-function buildCostSaving(Receipt) {
+function buildCostSaving(cartItems) {
 
   var loadPromotion=loadPromotions();
   var promotion=0;
 
-  for(var i=0;i<Receipt.cartItems.length;i++){
+  for (var i = 0; i < cartItems.length; i++) {
+    var subtotal = (cartItems[i].cartItem.item.price * cartItems[i].cartItem.count);
     for(var j=0;j<loadPromotion[0].barcodes.length;j++){
-      if(Receipt.cartItems[i].cartItem.item.barcode===loadPromotion[0].barcodes[j]){
-        promotion+=Math.floor(Receipt.cartItems[i].cartItem.count/3)*Receipt.cartItems[i].cartItem.item.price;
+      if(cartItems[i].cartItem.item.barcode===loadPromotion[0].barcodes[j]){
+        promotion+=Math.floor(cartItems[i].cartItem.count/3)*cartItems[i].cartItem.item.price;
       }
     }
   }
-  Receipt.CostSaving=promotion;
 
-  return Receipt;
+  return  promotion;
 
 }
 
