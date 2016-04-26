@@ -1,4 +1,280 @@
 describe('pos', function() {
+ describe('unite testing',function () {
+    describe('test buildItems function', function () {
+      var inputs;
+
+      beforeEach(function () {
+        inputs = [
+          {
+            barcode: 'ITEM000000',
+            name: '可口可乐',
+            unit: '瓶',
+            price: 3.00
+
+          },
+          {
+            barcode: 'ITEM000000',
+            name: '可口可乐',
+            unit: '瓶',
+            price: 3.00
+          },
+          {
+            barcode: 'ITEM000000',
+            name: '可口可乐',
+            unit: '瓶',
+            price: 3.00
+          },
+          {
+            barcode: 'ITEM000000',
+            name: '可口可乐',
+            unit: '瓶',
+            price: 3.00
+          },
+          {
+            barcode: 'ITEM000000',
+            name: '可口可乐',
+            unit: '瓶',
+            price: 3.00
+          },
+          {
+            barcode: 'ITEM000001',
+            name: '雪碧',
+            unit: '瓶',
+            price: 3.00
+          },
+          {
+            barcode: 'ITEM000001',
+            name: '雪碧',
+            unit: '瓶',
+            price: 3.00
+          },
+          {
+            barcode: 'ITEM000004',
+            name: '电池',
+            unit: '个',
+            price: 2.00
+          }
+        ];
+      });
+
+      it('return correct Items', function () {
+       
+        var Items = [
+          {
+            item: {
+              barcode: 'ITEM000000',
+              name: '可口可乐',
+              unit: '瓶',
+              price: 3.00
+            },
+            count: 5
+          },
+          {
+            item: {
+              barcode: 'ITEM000001',
+              name: '雪碧',
+              unit: '瓶',
+              price: 3.00
+            },
+            count: 2
+          },
+          {
+            item: {
+              barcode: 'ITEM000004',
+              name: '电池',
+              unit: '个',
+              price: 2.00
+            },
+            count: 1
+          }];
+        
+        expect(buildItems(inputs)).toEqual(Items);
+
+      });
+    });
+    
+   describe('test buildCartItems function', function () {
+   
+      var Items;
+   
+      beforeEach(function () {
+        Items = [
+          {
+            item: {
+              barcode: 'ITEM000000',
+              name: '可口可乐',
+              unit: '瓶',
+              price: 3.00
+            },
+            count: 5
+          },
+          {
+            item: {
+              barcode: 'ITEM000001',
+              name: '雪碧',
+              unit: '瓶',
+              price: 3.00
+            },
+            count: 2
+          },
+          {
+            item: {
+              barcode: 'ITEM000004',
+              name: '电池',
+              unit: '个',
+              price: 2.00
+            },
+            count: 1
+          }
+        ];
+      });
+   
+      it('return correct cartItems', function () {
+   
+        var cartItems = [
+          {
+            cartItem: {
+              item: {
+                barcode: 'ITEM000000',
+                name: '可口可乐',
+                unit: '瓶',
+                price: 3.00
+              },
+              count: 5
+            },
+            subtotal: 15
+          },
+          {
+
+            cartItem: {
+              item: {
+                barcode: 'ITEM000001',
+                name: '雪碧',
+                unit: '瓶',
+                price: 3.00
+              },
+              count: 2
+            },
+            subtotal: 6
+          },
+          {
+            cartItem: {
+              item: {
+                barcode: 'ITEM000004',
+                name: '电池',
+                unit: '个',
+                price: 2.00
+              },
+              count: 1
+            },
+            subtotal: 2
+          }
+        ];
+   
+        expect(bulidCartItems(Items)).toEqual(cartItems);
+   
+      });
+    });
+
+    describe('test buildReceipt function', function () {
+   
+      var cartItems;
+
+      beforeEach(function () {
+        cartItems = [
+          {
+            cartItem: {
+              item: {
+                barcode: 'ITEM000000',
+                name: '可口可乐',
+                unit: '瓶',
+                price: 3.00
+              },
+              count: 5
+            },
+            subtotal: 15
+          },
+          {
+
+            cartItem: {
+              item: {
+                barcode: 'ITEM000001',
+                name: '雪碧',
+                unit: '瓶',
+                price: 3.00
+              },
+              count: 2
+            },
+            subtotal: 6
+          },
+          {
+            cartItem: {
+              item: {
+                barcode: 'ITEM000004',
+                name: '电池',
+                unit: '个',
+                price: 2.00
+              },
+              count: 1
+            },
+            subtotal: 2
+          }
+        ];
+      });
+
+      it('return correct Receipt', function () {
+        
+        var Receipt = {
+          cartItems: [
+            {
+              cartItem: {
+                item: {
+                  barcode: 'ITEM000000',
+                  name: '可口可乐',
+                  unit: '瓶',
+                  price: 3.00
+                },
+                count: 5
+              },
+              subtotal: 15
+
+            },
+            {
+
+              cartItem: {
+                item: {
+                  barcode: 'ITEM000001',
+                  name: '雪碧',
+                  unit: '瓶',
+                  price: 3.00
+                },
+                count: 2
+              },
+              subtotal: 6
+            },
+            {
+              cartItem: {
+                item: {
+                  barcode: 'ITEM000004',
+                  name: '电池',
+                  unit: '个',
+                  price: 2.00
+                },
+                count: 1
+              },
+              subtotal: 2
+            }
+          ],
+          total: 23
+        };
+        
+        expect(buildReceipt(cartItems)).toEqual(Receipt);
+      
+      });
+    });
+  });
+
+
   var inputs;
 
   beforeEach(function() {
@@ -72,4 +348,4 @@ describe('pos', function() {
 
     expect(console.log).toHaveBeenCalledWith(expectText);
   });
-});
+})
