@@ -134,9 +134,9 @@ describe('pos', function() {
         ];
       });
 
-      it('return correct Items', function () {
+      it('return correct items', function () {
     
-        var Items = [
+        var items = [
           {
             item: {
               barcode: 'ITEM000000',
@@ -165,17 +165,17 @@ describe('pos', function() {
             count: 1
           }];
     
-        expect(buildItems(inputs)).toEqual(Items);
+        expect(buildItems(inputs)).toEqual(items);
 
       });
     });
     
     describe('test buildCartItems function', function () {
     
-      var Items;
+      var items;
     
       beforeEach(function () {
-        Items = [
+        items = [
           {
             item: {
               barcode: 'ITEM000000',
@@ -248,7 +248,7 @@ describe('pos', function() {
           }
         ];
     
-        expect(bulidCartItems(Items)).toEqual(cartItems);
+        expect(bulidCartItems(items)).toEqual(cartItems);
     
       });
     });
@@ -299,9 +299,9 @@ describe('pos', function() {
         ];
       });
 
-      it('return correct Receipt', function () {
+      it('return correct receipt', function () {
     
-        var Receipt = {
+        var receipt = {
           cartItems: [
             {
               cartItem: {
@@ -345,7 +345,7 @@ describe('pos', function() {
           total: 23
         };
     
-        expect(buildReceipt(cartItems)).toEqual(Receipt);
+        expect(buildReceipt(cartItems)).toEqual(receipt);
     
       });
     });
