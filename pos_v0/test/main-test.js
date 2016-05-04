@@ -107,9 +107,9 @@ describe('pos', function() {
         ];
       });
      
-      it('return correct Receipts',function () {
+      it('return correct receipts',function () {
      
-        var Receipts={Receipt:[
+        var receipts={receipt:[
           {
             item:
             {barcode: 'ITEM000000',
@@ -143,7 +143,7 @@ describe('pos', function() {
           total:23
         };
        
-        expect(buildReceipt(cartItems)).toEqual(Receipts);
+        expect(buildReceipt(cartItems)).toEqual(receipts);
       
       });
     });
