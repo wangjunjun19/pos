@@ -18,9 +18,9 @@ describe('pos', function() {
         ];
       });
 
-      it('return correct Items',function () {
+      it('return correct items',function () {
 
-        var Items=[
+        var items=[
           {item:'ITEM000001',
             count:5
           },
@@ -32,17 +32,17 @@ describe('pos', function() {
           }
         ];
 
-        expect(buildItems(inputs)).toEqual(Items);
+        expect(buildItems(inputs)).toEqual(items);
 
       });
     });
 
     describe('test buildAllItems function',function () {
-     
-      var Items;
-     
+
+      var items;
+
       beforeEach(function () {
-        Items=[
+        items=[
           {item:'ITEM000001',
             count:5
           },
@@ -55,9 +55,9 @@ describe('pos', function() {
         ];
       });
 
-      it('return correct Items',function () {
-     
-        var Items=[
+      it('return correct items',function () {
+
+        var items=[
           {item:{
             barcode: 'ITEM000001',
             name: '雪碧',
@@ -83,18 +83,18 @@ describe('pos', function() {
             count:3
           }
         ];
-     
-        expect(buildAllItems(Items)).toEqual(Items);
-     
+
+        expect(buildAllItems(items)).toEqual(items);
+
       });
     });
 
-    describe('test bulidCartItems function',function () {
-     
-      var Items;
-     
+    describe('test buildCartItems function',function () {
+
+      var items;
+
       beforeEach(function () {
-        Items=[
+        items=[
           {item:{
             barcode: 'ITEM000001',
             name: '雪碧',
@@ -123,7 +123,7 @@ describe('pos', function() {
       });
 
       it('return correct cartItems',function () {
-     
+
         var cartItems=[
           {
             cartItem: {
@@ -135,7 +135,8 @@ describe('pos', function() {
               },
               count: 5
             },
-            subtotal: 12
+            subtotal: 12,
+            saving:3
           },
           {
             cartItem: {
@@ -147,7 +148,8 @@ describe('pos', function() {
               },
               count: 2
             },
-            subtotal: 30
+            subtotal: 30,
+            saving:0
           },
           {
             cartItem: {
@@ -159,19 +161,20 @@ describe('pos', function() {
               },
               count: 3
             },
-            subtotal: 9
+            subtotal: 9,
+            saving:4.5
           }
         ];
-     
-        expect(bulidCartItems(Items)).toEqual(cartItems);
-     
+
+        expect(buildCartItems(items)).toEqual(cartItems);
+
       });
     });
 
     describe('test buildReceipt function',function () {
-     
+
       var cartItems;
-     
+
       beforeEach(function () {
         cartItems=[
           {
@@ -184,7 +187,8 @@ describe('pos', function() {
               },
               count: 5
             },
-            subtotal: 12
+            subtotal: 12,
+            saving:3
           },
           {
             cartItem: {
@@ -196,7 +200,8 @@ describe('pos', function() {
               },
               count: 2
             },
-            subtotal: 30
+            subtotal: 30,
+            saving:0
           },
           {
             cartItem: {
@@ -208,14 +213,15 @@ describe('pos', function() {
               },
               count: 3
             },
-            subtotal: 9
+            subtotal: 9,
+            saving:4.5
           }
         ];
       });
 
-      it('return correct Receipt',function () {
+      it('return correct receipt',function () {
 
-        var Receipt={
+        var receipt={
           cartItems:[
             {
               cartItem: {
@@ -227,7 +233,8 @@ describe('pos', function() {
                 },
                 count: 5
               },
-              subtotal: 12
+              subtotal: 12,
+              saving:3
             },
           {
             cartItem: {
@@ -239,7 +246,8 @@ describe('pos', function() {
               },
               count: 2
             },
-            subtotal: 30
+            subtotal: 30,
+            saving:0
           },
           {
             cartItem: {
@@ -251,15 +259,16 @@ describe('pos', function() {
               },
               count: 3
             },
-            subtotal: 9
+            subtotal: 9,
+            saving:4.5
           }
         ],
         total:51,
-          CostSaving:7.5
+        costSaving:7.5
       };
-     
-      expect(buildReceipt(cartItems)).toEqual(Receipt);
-     
+
+      expect(buildReceipt(cartItems)).toEqual(receipt);
+
       });
     });
   });
