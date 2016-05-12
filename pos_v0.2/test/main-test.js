@@ -1,9 +1,9 @@
-describe('pos', function() {
-  describe('unit testing',function () {
-    describe('test searchAllItems function',function () {
-     
+describe('pos', function () {
+  describe('unit testing', function () {
+    describe('test searchAllItems function', function () {
+
       var inputs;
-     
+
       beforeEach(function () {
         inputs = [
           'ITEM000000',
@@ -16,10 +16,10 @@ describe('pos', function() {
           'ITEM000004'
         ];
       });
-     
-      it('return correct  inputs',function () {
-     
-        var inputs=[
+
+      it('return correct  inputs', function () {
+
+        var inputs = [
           {
             barcode: 'ITEM000000',
             name: '可口可乐',
@@ -70,14 +70,14 @@ describe('pos', function() {
             price: 2.00
           }
         ];
-     
+
         expect(searchAllItems(inputs)).toEqual(inputs);
-     
+
       });
     });
-    
+
     describe('test buildItems function', function () {
-    
+
       var inputs;
 
       beforeEach(function () {
@@ -135,7 +135,7 @@ describe('pos', function() {
       });
 
       it('return correct items', function () {
-    
+
         var items = [
           {
             item: {
@@ -164,16 +164,16 @@ describe('pos', function() {
             },
             count: 1
           }];
-    
+
         expect(buildItems(inputs)).toEqual(items);
 
       });
     });
-    
+
     describe('test buildCartItems function', function () {
-    
+
       var items;
-    
+
       beforeEach(function () {
         items = [
           {
@@ -205,9 +205,9 @@ describe('pos', function() {
           }
         ];
       });
-    
+
       it('return correct cartItems', function () {
-    
+
         var cartItems = [
           {
             cartItem: {
@@ -247,14 +247,14 @@ describe('pos', function() {
             subtotal: 2
           }
         ];
-    
+
         expect(bulidCartItems(items)).toEqual(cartItems);
-    
+
       });
     });
 
     describe('test buildReceipt function', function () {
-    
+
       var cartItems;
 
       beforeEach(function () {
@@ -300,7 +300,7 @@ describe('pos', function() {
       });
 
       it('return correct receipt', function () {
-    
+
         var receipt = {
           cartItems: [
             {
@@ -344,45 +344,45 @@ describe('pos', function() {
           ],
           total: 23
         };
-    
+
         expect(buildReceipt(cartItems)).toEqual(receipt);
-    
       });
     });
   });
-  
-  var allItems;
-  var inputs;
+  describe("integration testing", function () {
+    var allItems;
+    var inputs;
 
-  beforeEach(function() {
-    allItems = loadAllItems();
-    inputs = [
-      'ITEM000000',
-      'ITEM000000',
-      'ITEM000000',
-      'ITEM000000',
-      'ITEM000000',
-      'ITEM000001',
-      'ITEM000001',
-      'ITEM000004'
-    ];
-  });
+    beforeEach(function () {
+      allItems = loadAllItems();
+      inputs = [
+        'ITEM000000',
+        'ITEM000000',
+        'ITEM000000',
+        'ITEM000000',
+        'ITEM000000',
+        'ITEM000001',
+        'ITEM000001',
+        'ITEM000004'
+      ];
+    });
 
-  it('should print correct text', function() {
+    it('should print correct text', function () {
 
-    spyOn(console, 'log');
+      spyOn(console, 'log');
 
-    printReceipt(inputs);
+      printReceipt(inputs);
 
-    var expectText =
-      '***<没钱赚商店>收据***\n' +
-      '名称：可口可乐，数量：5瓶，单价：3.00(元)，小计：15.00(元)\n' +
-      '名称：雪碧，数量：2瓶，单价：3.00(元)，小计：6.00(元)\n' +
-      '名称：电池，数量：1个，单价：2.00(元)，小计：2.00(元)\n' +
-      '----------------------\n' +
-      '总计：23.00(元)\n' +
-      '**********************';
+      var expectText =
+        '***<没钱赚商店>收据***\n' +
+        '名称：可口可乐，数量：5瓶，单价：3.00(元)，小计：15.00(元)\n' +
+        '名称：雪碧，数量：2瓶，单价：3.00(元)，小计：6.00(元)\n' +
+        '名称：电池，数量：1个，单价：2.00(元)，小计：2.00(元)\n' +
+        '----------------------\n' +
+        '总计：23.00(元)\n' +
+        '**********************';
 
-    expect(console.log).toHaveBeenCalledWith(expectText);
+      expect(console.log).toHaveBeenCalledWith(expectText);
+    });
   });
 });
