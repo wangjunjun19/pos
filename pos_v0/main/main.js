@@ -8,10 +8,10 @@ function printReceipt(inputs) {
 function buildCartItems(inputs) {
   var cartItems = [];
 
-  for (var i = 0; i < inputs.length; i++) {
-    var subtotal = (inputs[i].price * inputs[i].count);
-    cartItems.push({item: inputs[i], subtotal: subtotal});
-  }
+  inputs.forEach(function (value) {
+    var subtotal = (value.price * value.count);
+    cartItems.push({item: value, subtotal: subtotal});
+  })
 
   return cartItems;
 }
@@ -20,9 +20,9 @@ function buildReceipt(cartItems) {
   var sum = 0;
   var receipts = {};
 
-  for (var i = 0; i < cartItems.length; i++) {
-    sum += cartItems[i].subtotal;
-  }
+  cartItems.forEach(function (value) {
+    sum += value.subtotal;
+  })
   receipts.receipt = cartItems;
   receipts.total = sum;
 
