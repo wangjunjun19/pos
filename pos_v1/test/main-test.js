@@ -1,6 +1,6 @@
-describe('pos', function() {
-  describe('unit testing',function () {
-    describe('test buildItems function',function () {
+describe('pos', function () {
+  describe('unit testing', function () {
+    describe('test buildItems function', function () {
 
       var inputs;
 
@@ -18,17 +18,20 @@ describe('pos', function() {
         ];
       });
 
-      it('return correct items',function () {
+      it('return correct items', function () {
 
-        var items=[
-          {item:'ITEM000001',
-            count:5
+        var items = [
+          {
+            item: 'ITEM000001',
+            count: 5
           },
-          {item:'ITEM000003',
-            count:2
+          {
+            item: 'ITEM000003',
+            count: 2
           },
-          {item:'ITEM000005',
-            count:3
+          {
+            item: 'ITEM000005',
+            count: 3
           }
         ];
 
@@ -37,50 +40,56 @@ describe('pos', function() {
       });
     });
 
-    describe('test buildAllItems function',function () {
-
+    describe('test buildAllItems function', function () {
+      
       var items;
 
       beforeEach(function () {
-        items=[
-          {item:'ITEM000001',
-            count:5
+        items = [
+          {
+            item: 'ITEM000001',
+            count: 5
           },
-          {item:'ITEM000003',
-            count:2
+          {
+            item: 'ITEM000003',
+            count: 2
           },
-          {item:'ITEM000005',
-            count:3
+          {
+            item: 'ITEM000005',
+            count: 3
           }
         ];
       });
 
-      it('return correct items',function () {
+      it('return correct items', function () {
 
-        var items=[
-          {item:{
-            barcode: 'ITEM000001',
-            name: '雪碧',
-            unit: '瓶',
-            price: 3.00
+        var items = [
+          {
+            item: {
+              barcode: 'ITEM000001',
+              name: '雪碧',
+              unit: '瓶',
+              price: 3.00
+            },
+            count: 5
           },
-            count:5
+          {
+            item: {
+              barcode: 'ITEM000003',
+              name: '荔枝',
+              unit: '斤',
+              price: 15.00
+            },
+            count: 2
           },
-          {item:{
-            barcode: 'ITEM000003',
-            name: '荔枝',
-            unit: '斤',
-            price: 15.00
-          },
-            count:2
-          },
-          {item: {
-            barcode: 'ITEM000005',
-            name: '方便面',
-            unit: '袋',
-            price: 4.50
-          },
-            count:3
+          {
+            item: {
+              barcode: 'ITEM000005',
+              name: '方便面',
+              unit: '袋',
+              price: 4.50
+            },
+            count: 3
           }
         ];
 
@@ -89,42 +98,45 @@ describe('pos', function() {
       });
     });
 
-    describe('test buildCartItems function',function () {
+    describe('test buildCartItems function', function () {
 
       var items;
 
       beforeEach(function () {
-        items=[
-          {item:{
-            barcode: 'ITEM000001',
-            name: '雪碧',
-            unit: '瓶',
-            price: 3.00
+        items = [
+          {
+            item: {
+              barcode: 'ITEM000001',
+              name: '雪碧',
+              unit: '瓶',
+              price: 3.00
+            },
+            count: 5
           },
-            count:5
+          {
+            item: {
+              barcode: 'ITEM000003',
+              name: '荔枝',
+              unit: '斤',
+              price: 15.00
+            },
+            count: 2
           },
-          {item:{
-            barcode: 'ITEM000003',
-            name: '荔枝',
-            unit: '斤',
-            price: 15.00
-          },
-            count:2
-          },
-          {item: {
-            barcode: 'ITEM000005',
-            name: '方便面',
-            unit: '袋',
-            price: 4.50
-          },
-            count:3
+          {
+            item: {
+              barcode: 'ITEM000005',
+              name: '方便面',
+              unit: '袋',
+              price: 4.50
+            },
+            count: 3
           }
         ];
       });
 
-      it('return correct cartItems',function () {
+      it('return correct cartItems', function () {
 
-        var cartItems=[
+        var cartItems = [
           {
             cartItem: {
               item: {
@@ -136,7 +148,7 @@ describe('pos', function() {
               count: 5
             },
             subtotal: 12,
-            saving:3
+            saving: 3
           },
           {
             cartItem: {
@@ -149,7 +161,7 @@ describe('pos', function() {
               count: 2
             },
             subtotal: 30,
-            saving:0
+            saving: 0
           },
           {
             cartItem: {
@@ -162,21 +174,19 @@ describe('pos', function() {
               count: 3
             },
             subtotal: 9,
-            saving:4.5
+            saving: 4.5
           }
         ];
 
         expect(buildCartItems(items)).toEqual(cartItems);
-
       });
     });
 
-    describe('test buildReceipt function',function () {
-
+    describe('test buildReceipt function', function () {
       var cartItems;
 
       beforeEach(function () {
-        cartItems=[
+        cartItems = [
           {
             cartItem: {
               item: {
@@ -188,7 +198,7 @@ describe('pos', function() {
               count: 5
             },
             subtotal: 12,
-            saving:3
+            saving: 3
           },
           {
             cartItem: {
@@ -201,7 +211,7 @@ describe('pos', function() {
               count: 2
             },
             subtotal: 30,
-            saving:0
+            saving: 0
           },
           {
             cartItem: {
@@ -214,15 +224,15 @@ describe('pos', function() {
               count: 3
             },
             subtotal: 9,
-            saving:4.5
+            saving: 4.5
           }
         ];
       });
 
-      it('return correct receipt',function () {
+      it('return correct receipt', function () {
 
-        var receipt={
-          cartItems:[
+        var receipt = {
+          cartItems: [
             {
               cartItem: {
                 item: {
@@ -234,80 +244,80 @@ describe('pos', function() {
                 count: 5
               },
               subtotal: 12,
-              saving:3
+              saving: 3
             },
-          {
-            cartItem: {
-              item: {
-                barcode: 'ITEM000003',
-                name: '荔枝',
-                unit: '斤',
-                price: 15.00
+            {
+              cartItem: {
+                item: {
+                  barcode: 'ITEM000003',
+                  name: '荔枝',
+                  unit: '斤',
+                  price: 15.00
+                },
+                count: 2
               },
-              count: 2
+              subtotal: 30,
+              saving: 0
             },
-            subtotal: 30,
-            saving:0
-          },
-          {
-            cartItem: {
-              item: {
-                barcode: 'ITEM000005',
-                name: '方便面',
-                unit: '袋',
-                price: 4.50
+            {
+              cartItem: {
+                item: {
+                  barcode: 'ITEM000005',
+                  name: '方便面',
+                  unit: '袋',
+                  price: 4.50
+                },
+                count: 3
               },
-              count: 3
-            },
-            subtotal: 9,
-            saving:4.5
-          }
-        ],
-        total:51,
-        costSaving:7.5
-      };
+              subtotal: 9,
+              saving: 4.5
+            }
+          ],
+          total: 51,
+          costSaving: 7.5
+        };
 
-      expect(buildReceipt(cartItems)).toEqual(receipt);
-
+        expect(buildReceipt(cartItems)).toEqual(receipt);
       });
     });
   });
 
+  describe("integration testing", function () {
+    var allItems;
+    var inputs;
 
-  var allItems;
-  var inputs;
+    beforeEach(function () {
+      allItems = loadAllItems();
+      inputs = [
+        'ITEM000001',
+        'ITEM000001',
+        'ITEM000001',
+        'ITEM000001',
+        'ITEM000001',
+        'ITEM000003-2',
+        'ITEM000005',
+        'ITEM000005',
+        'ITEM000005'
+      ];
+    });
 
-  beforeEach(function() {
-    allItems = loadAllItems();
-    inputs = [
-      'ITEM000001',
-      'ITEM000001',
-      'ITEM000001',
-      'ITEM000001',
-      'ITEM000001',
-      'ITEM000003-2',
-      'ITEM000005',
-      'ITEM000005',
-      'ITEM000005'
-    ];
-  });
+    it('should print correct text', function () {
 
-  it('should print correct text', function() {
+      spyOn(console, 'log');
 
-    spyOn(console, 'log');
+      printReceipt(inputs);
 
-    printReceipt(inputs);
+      var expectText =
+        '***<没钱赚商店>收据***\n' +
+        '名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)\n' +
+        '名称：荔枝，数量：2斤，单价：15.00(元)，小计：30.00(元)\n' +
+        '名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)\n' +
+        '----------------------\n' +
+        '总计：51.00(元)\n' +
+        '节省：7.50(元)\n' +
+        '**********************';
 
-    var expectText =
-      '***<没钱赚商店>收据***\n' +
-      '名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)\n' +
-      '名称：荔枝，数量：2斤，单价：15.00(元)，小计：30.00(元)\n' +
-      '名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)\n' +
-      '----------------------\n' +
-      '总计：51.00(元)\n' +
-      '节省：7.50(元)\n' +
-      '**********************';
-
-    expect(console.log).toHaveBeenCalledWith(expectText);
+      expect(console.log).toHaveBeenCalledWith(expectText);
+    });
   });
 });
